@@ -1,124 +1,81 @@
-<h1 style="
-   display: flex;
-   alignItems: center;
-   justify-content: center;
-   color: #7159c1"
->
-   RESPONSIVIDADE
-</h1>
+# Responsividade 
 
-<div style="
-   font-size: 62.5%;
-   border: 1px solid #7159c1;
-   border-radius: 5px;
-   font-size: 1rem;
-   "
->
-   <div style="
-      font-size: 2rem;
-      background-color: #7159c1; 
-      border-radius: 5px 5px 0 0; 
-      alignItems: center;
-      justify-content: center;
-      display: flex;
-      color: #fff;
-      "
- 
-   ## CSS Units
-   </div>
+Responsividade é um assunto muito importante para que nosso layout seja flexível, conforme o dispositivo que o está acessando, seja ele smartphone, tablet ou desktop. (E até mesmo, a impressora)
 
-   Unidades de medidas do CSS
-   Layout Fixo
-   `px` - Pixels
+Utilizei estratégias de CSS Units para que tanto o Layout, quanto os textos, fiquem fluidos. 
 
-   Layout Fluido
-   `%` - Porcentagem
-   `auto` - Automática
-   `vh` - Viewport Height (é o display)
-   `vw` - Viewport Width (é o display)
+Utilizei também CSS Media Queries para adicionar CSS customizados conforme o breakpoint definido, para que o layout fique adaptado ao viewport do dispositivo. 
 
-   Textos Fixos
-   1px  = 0.75pt
-   16px = 12pt 
+## CSS Units
 
-   Textos Fluidos
-   `em`  - multiplicado pelo valor do pai na hierarquia. Se o container for o pai e tiver um font-size de 14px e o filho um font-size de 1em, seria como se estivesse multiplicando 1 x 14
+Unidades de medidas do CSS
 
-   `rem` - multiplicado pelo root, que no caso seria o html body. Se o font-size padrão do html for 16px, então seria multiplicado por esse valor
+Layout Fixo
+`px` - Pixels
 
-   <div style="
-      font-size: 2rem;
-      background-color: #7159c1; 
-      alignItems: center;
-      justify-content: center;
-      display: flex;
-      color: #fff;
-      "
+Layout Fluido
+`%` - Porcentagem
+`auto` - Automática
+`vh` - Viewport Height
+`vw` - Viewport Width
 
-   ## CSS Media Queries
-   </div>
+Textos fixos
+`1px` = 0.75pt
+`16px` = 12pt
 
-   ```CSS
-   @media (max-width: 320px) {
-      #form h3 {
-         font-size: 2rem;  
-      }]
-   }
-   ```
+Texto fluidos
+`em` - multiplicado pelo pai 
+`rem` - multiplicado pelo root
 
-   <div style="
-      font-size: 2rem;
-      background-color: #7159c1; 
-      alignItems: center;
-      justify-content: center;
-      display: flex;
-      color: #fff;
-      "
+## CSS Media Queries 
 
-   ## HTML Media Attrib.
-   </div>
+No HTMl eu coloco a seguinte tag meta
 
-   ```CSS
-   <link 
-      rel="stylesheet" 
-      href="responsive.css" 
-      media="screen and (max-width: 768px)"
-   />
-   ```
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
 
-   <div style="
-      font-size: 2rem;
-      background-color: #7159c1; 
-      alignItems: center;
-      justify-content: center;
-      display: flex;
-      color: #fff;
-      "
+No CSS eu uso da seguinte forma
 
-   ## Imagens
-   </div>
+```css
+@media (max-width: 320px) {
+  #form h3 {
+    font-size: 2rem;
+  }
+}
+```
 
-   `<picture>`
-   ```CSS
-   <picture class="image" alt="Imagem">
-      <source media="(min-width: 768px)" srcset="https://i.ytimg.com/vi/GykTLqODQuU/maxresdefault.jpg">
-      <source media="(min-width: 320px)" srcset="https://i.ytimg.com/vi/GykTLqODQuU/hqdefault.jpg">
-      <source media="(min-width: 10px)" srcset="https://i.ytimg.com/vi/GykTLqODQuU/mqdefault.jpg">
-   ```
+## HTML Media Attrib.
 
-   ### JPG, PNG vs SVG
-   > sempre que possível, utilize svg para manter a qualidade ao redimensionar
+Posso utilizar o atribuito `media` no link do meu HTML, ao importar um arquivo css, usando as propriedades da mesma forma que usaria na regra `@media` do css.
 
-</div>
+```html
+<link 
+    rel="stylesheet"
+    href="responsive.css" 
+    media="screen and (max-width: 768px)"
+/>
 
+<link rel="stylesheet" href="print.css" media="print">
+```
 
+## Imagens
 
+Usamos a tag `<picture>` para que as imagens sejam responsivas.
 
+```html
+<picture class="image" alt="Imagem">
+    <source media="(min-width: 768px)" 
+        srcset="https://i.ytimg.com/vi/GykTLqODQuU/maxresdefault.jpg">
+    <source media="(min-width: 320px)" 
+        srcset="https://i.ytimg.com/vi/GykTLqODQuU/hqdefault.jpg">
+    <source media="(min-width: 10px)" 
+        srcset="https://i.ytimg.com/vi/GykTLqODQuU/mqdefault.jpg">
 
+    <img 
+        src="https://i.ytimg.com/vi/GykTLqODQuU/hqdefault.jpg" 
+        alt="Imagem" />
+</picture>
+```
 
-
-
-
-
-
-
+Sempre que possível, usar SVG ao invés de JPG, PNG
